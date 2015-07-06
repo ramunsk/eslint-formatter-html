@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<style>
+			{{css}}
+		</style>
+	</head>
+	<body> 
+		<div class="report">
+			<h1>{{title}}</h1>
+			<div>
+				<span class="badge">
+					<span class="badge-label">total files:</span>
+					<span class="badge-value">{{stats.totalFiles}}</span>
+				</span>
+				<span class="badge error">
+					<span class="badge-label">files with errors:</span>
+					<span class="badge-value">{{stats.totalFilesWithErrors}} / {{stats.totalFiles}}</span>
+				</span>
+				<span class="badge warning">
+					<span class="badge-label">files with warnings:</span>
+					<span class="badge-value">{{stats.totalFilesWithWarnings}} / {{stats.totalFiles}}</span>
+				</span>
+				<span class="badge ok">
+					<span class="badge-label">ok files:</span>
+					<span class="badge-value">{{stats.totalOkFiles}} / {{stats.totalFiles}}</span>
+				</span>
+				<span class="badge error">
+					<span class="badge-label">total errors:</span>
+					<span class="badge-value">{{stats.totalErrors}}</span>
+				</span>
+				<span class="badge warning">
+					<span class="badge-label">total warnings:</span>
+					<span class="badge-value">{{stats.totalWarnings}}</span>
+				</span>
+			</div>
+			{{results}}
+			<div class="card {{status}}">
+				<div class="card-header" data-hash="{{hash}}">
+					<h2>{{filename}}</h2>
+					<em class="fill">in {{dirname}}</em>
+					<div>
+						<span class="badge {{if errorCount|more>0}}error{{/if}}"><span class="badge-value">{{errorCount}}</span></span>
+						<span class="badge {{if warningCount|more>0}}warning{{/if}}"><span class="badge-value">{{warningCount}}</span></span>
+					</div>
+				</div>
+				<div class="card-content">
+					<hr>
+					{{messages}}
+					<div class="message {{severity|toggle>1,2>warning,error}}">
+						<span class="coords">{{line}}:{{column}}</span>
+						{{message}}
+						{{if ruleId}}
+						<span class="badge link"><span class="badge-value"><a href="http://eslint.org/docs/rules/{{ruleId}}" target="_blank">{{ruleId}}</a></span></span>
+						{{/if}}
+						<br />
+						{{if source}}
+						<pre>{{source|htmlencode}}</pre>
+						{{/if}}
+					</div>
+					<div></div>
+					{{/messages}}
+				</div>
+			</div>
+			{{/results}}
+		</div>
+		<script>
+			{{js}}
+		</script>
+	</body>
+</html>
