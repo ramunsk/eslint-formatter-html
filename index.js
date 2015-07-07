@@ -5,7 +5,6 @@
 var fs   = require('fs'),
 	path = require('path'),
 	mark = require('markup-js'),
-	util = require('gulp-util'),
 	enc  = require('htmlencode').htmlEncode;
 
 mark.pipes.htmlencode = function(str){
