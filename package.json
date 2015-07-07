@@ -1,6 +1,6 @@
 {
   "name": "gulp-eslint-html-formatter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "An HTML formatter for gulp-eslint plugin",
   "repository": "ramunsk/gulp-eslint-html-formatter",
   "files": [
