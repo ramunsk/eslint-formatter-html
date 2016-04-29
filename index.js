@@ -4,12 +4,9 @@
 
 var fs   = require('fs'),
 	path = require('path'),
-	mark = require('markup-js'),
-	enc  = require('htmlencode').htmlEncode;
+	vash = require('vash'),
+	firstBy = require('thenby');
 
-mark.pipes.htmlencode = function(str){
-	return enc(str);	
-};
 
 function hasFatalErrors(item){
 	return item.fatal;
@@ -30,7 +27,7 @@ function getStatus(item){
 }
 
 
-function eslintHtmlFormatter(options){
+function formatter(options){
 	
 	options = options || {};
 	options.title = options.title || 'ESLint report';
@@ -65,16 +62,16 @@ function eslintHtmlFormatter(options){
 						
 		});
 		
-		results.sort(function(a, b){
-			return b.errorCount - a.errorCount;
-		});
+		results.sort(firstBy('errorCount', -1).thenBy('warningCount', -1));
 		
 		var template = fs.readFileSync(path.join(__dirname, 'template.html'), 'utf-8');
 		var css = fs.readFileSync(path.join(__dirname, 'styles.css'), 'utf-8');
 		var js = fs.readFileSync(path.join(__dirname, 'report.js'), 'utf-8');
 		
-		return mark.up(template, { results: results, css: css, js: js, title: options.title, stats: stats });
+		var compiled = vash.compile(template);
+
+		return compiled({ results: results, css: css, js: js, title: options.title, stats: stats });
 	};
 }
 
-module.exports = eslintHtmlFormatter;
+module.exports = formatter;

@@ -62,14 +62,17 @@ hr {
 	cursor: pointer;
 }
 pre {
-	margin: 0 0 0 50px;
+	margin: 10px 0 0 50px;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	/*border: 1px solid gray;*/
-	/*background: lightgray;*/
-	/*border-radius: 5px;*/
 	color: #666;
+	line-height: 1em;
 	
+}
+
+.pointer {
+	font-weight: bold;
+	color: red;
 }
 
 em {

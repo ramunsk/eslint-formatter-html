@@ -1,8 +1,8 @@
 {
-  "name": "gulp-eslint-html-formatter",
+  "name": "eslint-formatter-html",
   "version": "0.1.1",
-  "description": "An HTML formatter for gulp-eslint plugin",
-  "repository": "ramunsk/gulp-eslint-html-formatter",
+  "description": "Yet another HTML formatter for eslint",
+  "repository": "ramunsk/eslint-formatter-html",
   "files": [
     "index.js",
     "report.js",
@@ -10,9 +10,7 @@
     "template.html"
   ],
   "keywords": [
-    "gulpplugin",
     "eslint",
-    "gulp",
     "errors",
     "warnings",
     "check",
@@ -28,6 +26,7 @@
   "author": "ramunsk",
   "dependencies": {
     "htmlencode": "0.0.4",
-    "markup-js": "^1.5.21"
+    "thenby": "^1.1.3",
+    "vash": "0.11.3"
   }
 }
