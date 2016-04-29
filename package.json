@@ -1,6 +1,6 @@
 {
   "name": "eslint-formatter-html",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "Yet another HTML formatter for eslint",
   "repository": "ramunsk/eslint-formatter-html",
   "files": [
@@ -25,7 +25,6 @@
   ],
   "author": "ramunsk",
   "dependencies": {
-    "htmlencode": "0.0.4",
     "thenby": "^1.1.3",
     "vash": "0.11.3"
   }
